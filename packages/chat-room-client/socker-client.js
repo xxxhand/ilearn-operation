@@ -22,7 +22,7 @@ class SocketClient {
    */
   useUser = (id = '') => {
     this._userId = id;
-    this._userName = `xxxhand-${this._userId}`;
+    this._userName = `stress-${this._userId}`;
     return this;
   }
 
