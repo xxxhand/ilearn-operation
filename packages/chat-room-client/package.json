@@ -1,0 +1,34 @@
+{
+  "name": "chat-room-client",
+  "version": "0.0.0",
+  "description": "Now I’m the model of a modern major general / The venerated Virginian veteran whose men are all / Lining up, to put me up on a pedestal / Writin’ letters to relatives / Embellishin’ my elegance and eloquence / But the elephant is in the room / The truth is in ya face when ya hear the British cannons go / BOOM",
+  "keywords": [],
+  "author": "xxxhand <nohandboy@gmail.com>",
+  "license": "ISC",
+  "main": "lib/chat-room-client.js",
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "files": [
+    "lib"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xxxhand/ilearn-operation.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "bugs": {
+    "url": "https://github.com/xxxhand/ilearn-operation/issues"
+  },
+  "homepage": "https://github.com/xxxhand/ilearn-operation#readme",
+  "dependencies": {
+    "mongoose": "^5.12.12",
+    "node-fetch": "^2.6.1",
+    "p-event": "^4.2.0",
+    "socket.io-client": "^4.1.2",
+    "yargs": "^17.0.1"
+  }
+}
