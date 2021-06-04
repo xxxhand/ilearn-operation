@@ -1,4 +1,5 @@
-const args = require('./app-argvs');
+const { customArgvs } = require('@llearn/app-common/custom-tools');
+const { LOGGER } = require('@llearn/app-common');
 const SocketClient = require('./socker-client');
 const AppHelper = require('./app-helper');
 
@@ -85,8 +86,8 @@ async function _openRooms(rooms = []) {
  * @returns {Promise<void>}
  */
 async function _runClients(rooms = []) {
-    console.log(`Ready to run ${args.length} socket clients`);
-    for (let i = 0; i < args.length; i++) {
+    console.log(`Ready to run ${customArgvs.length} socket clients`);
+    for (let i = 0; i < customArgvs.length; i++) {
         const random = Math.floor(Math.random() * rooms.length);
 
         const client = new SocketClient(i)
@@ -100,8 +101,8 @@ async function _runClients(rooms = []) {
 }
 
 async function main() {
-    console.log('Start');
-    const rooms = await _createRooms(_createHosts(args.rooms));
+    LOGGER.info(`Start on ${new Date().toISOString()}`);
+    const rooms = await _createRooms(_createHosts(customArgvs.rooms));
     console.log(rooms);
     await _openRooms(rooms);
     await _runClients(rooms);

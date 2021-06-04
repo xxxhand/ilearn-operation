@@ -25,6 +25,7 @@
   },
   "homepage": "https://github.com/xxxhand/ilearn-operation#readme",
   "dependencies": {
+    "@llearn/app-common": "0.0.0",
     "mongoose": "^5.12.12",
     "node-fetch": "^2.6.1",
     "p-event": "^4.2.0",

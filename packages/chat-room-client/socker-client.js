@@ -1,5 +1,6 @@
 const { io } = require('socket.io-client');
 const pEvent = require('p-event');
+const { LOGGER } = require('@llearn/app-common');
 const AppHelper = require('./app-helper');
 
 class SocketClient {
@@ -54,6 +55,7 @@ class SocketClient {
     this._client.on('data', this._onData);
     return new Promise((res) => {
       this._client.once('connect', () => {
+        LOGGER.info(`Number ${this.index} connected`);
         res();
       });
     });

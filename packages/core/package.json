@@ -25,5 +25,8 @@
   },
   "bugs": {
     "url": "https://github.com/xxxhand/js-mono-sample/issues"
+  },
+  "dependencies": {
+    "@llearn/app-common": "0.0.0"
   }
 }

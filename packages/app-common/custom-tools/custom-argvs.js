@@ -7,21 +7,17 @@ const _argvs = yargs
       describe: 'Set the logger path',
       default: './logs',
     },
-    port: {
+    length: {
+      alias: 'l',
       demandOption: false,
-      alias: 'p',
-      describe: 'Set the http server port',
-      default: '9000',
+      describe: 'Set max socket client length, default to 1',
+      default: '1',
     },
-    env: {
+    rooms: {
+      alias: 'r',
       demandOption: false,
-      describe: 'Set the execute environment, should be local|dev|prod',
-      default: process.env.NODE_ENV || 'test',
-    },
-    configpath: {
-      demandOption: false,
-      describe: 'Set the config file path absolutely, default is empty',
-      default: '',
+      describe: 'Set max room length, default to 1',
+      default: '1',
     },
   })
   .help()

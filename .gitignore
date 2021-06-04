@@ -10,3 +10,4 @@ build
 *.xml
 public/unit-test
 *.log
+logs
