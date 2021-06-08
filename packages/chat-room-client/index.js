@@ -73,7 +73,9 @@ async function _openRooms(rooms = []) {
         await host.start();
         await host.joinRoom();
         await host.openRoom();
-        setInterval(() => host.sendMessage(host.whoami), 1000);
+        const seconds = AppHelper.randomSeconds();
+        LOGGER.info(`Send message every ${seconds} seconds`);
+        setInterval(() => host.sendMessage(host.whoami), seconds * 1000);
         i++;
     }
 }
@@ -96,12 +98,14 @@ async function _runClients(rooms = []) {
 
         await client.start();
         await client.joinRoom();
-        setInterval(() => client.sendMessage(client.whoami), 1000);
+        const seconds = AppHelper.randomSeconds();
+        LOGGER.info(`Send message every ${seconds} seconds`);
+        setInterval(() => client.sendMessage(client.whoami), seconds * 1000);
     }
 }
 
 async function main() {
-    LOGGER.info(`Start on ${new Date().toISOString()}`);
+    LOGGER.info(`------ Start on ${new Date().toISOString()}`);
     const rooms = await _createRooms(_createHosts(customArgvs.rooms));
     console.log(rooms);
     await _openRooms(rooms);

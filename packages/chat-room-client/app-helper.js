@@ -1,6 +1,8 @@
 const { Types } = require('mongoose');
 const { default: nodeFetch } = require('node-fetch');
 
+const _SECONDS = [3, 5, 8, 10, 14, 20];
+
 class AppHelper {
 
   static get chatDomain() {
@@ -23,6 +25,11 @@ class AppHelper {
 
   static randomObjectId() {
     return new Types.ObjectId().toString();
+  }
+
+  static randomSeconds() {
+    const random = Math.floor(Math.random() * _SECONDS.length);
+    return _SECONDS[random];
   }
 
   /**
