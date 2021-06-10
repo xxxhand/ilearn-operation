@@ -8,6 +8,7 @@
     "clean": "npx lerna run --parallel clean",
     "lint": "node ./node_modules/.bin/eslint packages/**/*.js",
     "start:chat-client": "node ./packages/chat-room-client/index.js",
+    "start:conn": "node ./packages/chat-room-client/index.js",
     "test:local": "npm test --envir=development",
     "test": "cross-env NODE_ENV=$npm_config_envir node --max_old_space_size=4096 ./node_modules/.bin/jest --config=./jestrc.json --runInBand --logHeapUsage --detectOpenHandles --forceExit"
   },
