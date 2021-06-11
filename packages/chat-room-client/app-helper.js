@@ -1,7 +1,7 @@
 const { Types } = require('mongoose');
 const { default: nodeFetch } = require('node-fetch');
 
-const _SECONDS = [3, 5, 8, 10, 14, 20];
+const _SECONDS = [10, 20, 30];
 
 class AppHelper {
 
