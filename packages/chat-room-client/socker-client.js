@@ -53,10 +53,14 @@ class SocketClient {
     this._client.on('connect', this._onConnect);
     this._client.on('connect_err', this._onConnectError);
     this._client.on('data', this._onData);
-    return new Promise((res) => {
+    return new Promise((res, rej) => {
       this._client.once('connect', () => {
         LOGGER.info(`Number ${this.index} connected`);
         res();
+      });
+      this._client.once('connect_err', (err) => {
+        LOGGER.info(`Number ${this.index} fail`);
+        rej(err);
       });
     });
   }

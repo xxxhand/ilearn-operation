@@ -70,7 +70,13 @@ async function _openRooms(rooms = []) {
         const host = new SocketClient(i)
             .useRoom(room._id)
             .useUser(room.hostId);
-        await host.start();
+        try {
+            await host.start();
+        } catch (ex) {
+            LOGGER.error(`Host ${host.index} open fail`);
+            continue;
+        }
+        
         await host.joinRoom();
         await host.openRoom();
         const seconds = AppHelper.randomSeconds();
@@ -96,7 +102,13 @@ async function _runClients(rooms = []) {
             .useRoom(rooms[random]._id)
             .useUser(AppHelper.randomObjectId());
 
-        await client.start();
+        try {
+            await client.start();
+        } catch (ex) {
+            LOGGER.info(`Client ${client.index} start fail`);
+            continue;
+        }
+        
         await client.joinRoom();
         const seconds = AppHelper.randomSeconds();
         LOGGER.info(`Send message every ${seconds} seconds`);

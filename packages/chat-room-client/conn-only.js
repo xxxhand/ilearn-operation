@@ -3,8 +3,12 @@ const SocketClient = require('./socker-client');
 
 async function _tryConnecting() {
   for (let i = 0; i < customArgvs.length; i++) {
-    const s = new SocketClient(i);
-    await s.start();
+    try {
+      const s = new SocketClient(i);
+      await s.start();
+    } catch (ex) {
+      console.log(ex);
+    }
   }
 }
 
