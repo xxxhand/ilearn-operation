@@ -7,8 +7,8 @@ class AppHelper {
 
   static get chatDomain() {
     // return 'http://localhost:9002'; // for local
-    return 'https://icarechatuat.compal-health.com';
-    // return 'http://10.109.35.51:9005'
+    return 'https://icarechatuat.compal-health.com'; // for uat w/ nginx
+    // return 'http://104.199.235.97:12320'
   }
 
   static get createRoomApi() {
@@ -21,7 +21,7 @@ class AppHelper {
 
   static get rootCA() {
     // return 'ODYwM2YxNTctZTUzNy00NGNiLWI0NTctNWI5OTJmZGFjNTNl'; // for local
-    return 'ODYwM2YxNTctZTUzNy00NGNiLWI0NTctNWI5OTJmZGFjNTNlbxq';
+    return 'ODYwM2YxNTctZTUzNy00NGNiLWI0NTctNWI5OTJmZGFjNTNlbxq'; // for uat w/ nginx
     // return 'xxxhand';
   }
 
