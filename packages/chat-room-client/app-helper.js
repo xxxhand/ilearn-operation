@@ -1,10 +1,9 @@
 const { Types } = require('mongoose');
 const { default: nodeFetch } = require('node-fetch');
 
-const _SECONDS = [10, 20, 30];
+const _SECONDS = [120, 180, 60];
 
 class AppHelper {
-
   static get chatDomain() {
     // return 'http://localhost:9002'; // for local
     return 'https://icarechatuat.compal-health.com'; // for uat w/ nginx
@@ -47,7 +46,7 @@ class AppHelper {
       headers: {
         'Content-Type': 'application/json',
       },
-      method: 'POST'
+      method: 'POST',
     };
     try {
       const res = await nodeFetch(opt.url, option);
