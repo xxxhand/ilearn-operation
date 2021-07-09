@@ -6,7 +6,7 @@ const _SECONDS = [120, 180, 60, 240, 300];
 class AppHelper {
   static get chatDomain() {
     // return 'http://localhost:9002'; // for local
-    return 'http://icarechatuat.compal-health.com'; // for uat w/ nginx
+    return 'https://icarechatuat.compal-health.com'; // for uat w/ nginx
     // return 'http://104.199.235.97:12320'
   }
 
