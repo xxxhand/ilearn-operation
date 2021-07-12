@@ -9,6 +9,8 @@ const AppHelper = require('./app-helper');
  * @property {string} hostId
  */
 
+/** @type {Array<SocketClient>} */
+const _ALL_CLIENTS = [];
 
 /**
  * @function
@@ -17,7 +19,7 @@ const AppHelper = require('./app-helper');
  */
 function _createHosts(num = 0) {
     console.log(`Create ${num} hosts`);
-    const hosts = new Set()
+    const hosts = new Set();
     for (let i = 0; i < num; i++) {
         hosts.add(AppHelper.randomObjectId());
     }
@@ -79,9 +81,9 @@ async function _openRooms(rooms = []) {
         
         await host.joinRoom();
         await host.openRoom();
-        const seconds = AppHelper.randomSeconds();
-        LOGGER.info(`Send message every ${seconds} seconds`);
-        setInterval(() => host.sendMessage(host.whoami), seconds * 1000);
+        // const seconds = AppHelper.randomSeconds();
+        // LOGGER.info(`Send message every ${seconds} seconds`);
+        // setInterval(() => host.sendMessage(host.whoami), seconds * 1000);
         i++;
     }
 }
@@ -110,10 +112,19 @@ async function _runClients(rooms = []) {
         }
         
         await client.joinRoom();
-        const seconds = AppHelper.randomSeconds();
-        LOGGER.info(`Send message every ${seconds} seconds`);
-        setInterval(() => client.sendMessage(client.whoami), seconds * 1000);
+        _ALL_CLIENTS.push(client);
+        // const seconds = AppHelper.randomSeconds();
+        // LOGGER.info(`Send message every ${seconds} seconds`);
+        // setInterval(() => client.sendMessage(client.whoami), seconds * 1000);
     }
+}
+
+function _startToSend() {
+    _ALL_CLIENTS.forEach((x) => {
+        const seconds = AppHelper.randomSeconds();
+        LOGGER.info(`Client ${x.index} send message every ${seconds} seconds`);
+        setInterval(() => x.sendMessage(x.whoami), seconds * 1000);
+    });
 }
 
 async function main() {
@@ -122,6 +133,7 @@ async function main() {
     console.log(rooms);
     await _openRooms(rooms);
     await _runClients(rooms);
+    _startToSend();
 }
 
 main().catch((ex) => console.log(ex));
