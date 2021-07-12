@@ -1,7 +1,7 @@
 const { Types } = require('mongoose');
 const { default: nodeFetch } = require('node-fetch');
 
-const _SECONDS = [120, 180, 60, 240, 300];
+const _SECONDS = [120, 180, 240, 300];
 
 class AppHelper {
   static get chatDomain() {
