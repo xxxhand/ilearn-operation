@@ -53,6 +53,7 @@ class SocketClient {
     this._client.on('connect', this._onConnect);
     this._client.on('connect_err', this._onConnectError);
     this._client.on('data', this._onData);
+    this._client.on('alive', this._onAlive);
     return new Promise((res, rej) => {
       this._client.once('connect', () => {
         LOGGER.info(`Number ${this.index} connected`);
@@ -115,6 +116,10 @@ class SocketClient {
   }
   _onData = (data) => {
     console.log(`Number ${this.index} recevie data ${JSON.stringify(data)}`);
+  }
+
+  _onAlive = (data) => {
+    this._client.emit('alive', data);
   }
 }
 
