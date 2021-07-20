@@ -43,7 +43,8 @@ async function _createRooms(hosts = []) {
         const roomRequest = await AppHelper.tryPostJson({
             url: `${AppHelper.chatDomain}/${AppHelper.createRoomApi}`,
             data: {
-                hostId: hid
+                hostId: hid,
+                expectStartAt: new Date(),
             },
         });
         if (roomRequest.code > 0) {
